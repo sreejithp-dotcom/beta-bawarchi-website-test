@@ -1,0 +1,1433 @@
+
+  /* =========================================================
+   BETA BAWARCHI GROUP
+   MAIN WEBSITE STYLES
+========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
+
+:root {
+    --ink: #20201d;
+    --muted: #6f6d67;
+    --gold: #a57d42;
+    --paper: #f7f5ef;
+    --white: #fff;
+    --line: #ded9cf;
+
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   2. GLOBAL STYLES
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   3. HEADER
+========================================================= */
+
+.header {
+    height: 78px;
+    border-bottom: 1px solid var(--line);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6vw;
+
+    position: sticky;
+    top: 0;
+
+    background: rgba(247, 245, 239, 0.96);
+    backdrop-filter: blur(10px);
+
+    z-index: 20;
+}
+
+
+/* Brand */
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    width: 150px;
+    height: 52px;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+}
+
+
+/* Navigation */
+
+.nav {
+    display: flex;
+    gap: 26px;
+    font-size: 12px;
+}
+
+.nav a:hover {
+    color: var(--gold);
+}
+
+.nav .cta {
+    border-bottom: 1px solid var(--ink);
+}
+
+
+/* =========================================================
+   4. HOMEPAGE HERO
+========================================================= */
+
+.hero {
+    min-height: calc(100vh - 78px);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.hero-copy {
+    padding: 9vw;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.eyebrow,
+.kicker {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.hero h1 {
+    font: 500 clamp(48px, 6vw, 84px) / 1.02 var(--serif);
+    margin: 20px 0;
+}
+
+.hero h1 em {
+    font-style: italic;
+    color: #876a42;
+}
+
+.hero-copy p {
+    max-width: 530px;
+    color: var(--muted);
+}
+
+.hero-img {
+    min-height: 620px;
+    position: relative;
+    overflow: hidden;
+    background: #222;
+}
+
+
+/* =========================================================
+   HERO IMAGE SLIDES
+========================================================= */
+
+.hero-slide {
+    position: absolute;
+
+    inset: 0;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transition: opacity 1.4s ease;
+
+    transform: scale(1.02);
+}
+
+
+/* Dark overlay */
+
+.hero-slide::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.55)
+        );
+}
+
+
+/* Active slide */
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+
+/* Pachmarhi label */
+
+.hero-img span {
+    position: absolute;
+
+    left: 8%;
+    bottom: 8%;
+
+    color: white;
+
+    font: 500 42px var(--serif);
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   5. BUTTONS
+========================================================= */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 13px 21px;
+
+    border: 1px solid var(--ink);
+
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn.dark {
+    background: var(--ink);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.82;
+}
+
+
+/* =========================================================
+   6. GENERAL SECTIONS
+========================================================= */
+
+.section {
+    padding: 100px 8vw;
+}
+
+.white {
+    background: #fff;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 50px;
+}
+
+.section h2 {
+    font: 500 clamp(35px, 4vw, 56px) / 1.1 var(--serif);
+    margin: 8px 0;
+}
+
+.section-head p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   7. PROPERTY CARDS
+========================================================= */
+
+.property-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.property-card {
+    background: var(--paper);
+}
+
+.card-img {
+    height: 430px;
+    background: center / cover;
+}
+
+.indraprastha {
+    background-image:
+        url("images/indraprastha/Facade-web.webp");
+}
+
+.serenity {
+    background-image:
+        url("images/Serenity/serenity-web.webp");
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.card-body h3 {
+    font: 500 34px var(--serif);
+    margin: 8px 0;
+}
+
+.card-body p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.link {
+    font-size: 12px;
+
+    border-bottom: 1px solid var(--ink);
+
+    display: inline-block;
+
+    padding-bottom: 3px;
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   8. EXPERIENCES
+========================================================= */
+
+.experiences {
+    background: #eeece6;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.experience {
+    background: var(--paper);
+
+    padding: 30px;
+    min-height: 170px;
+}
+
+.experience span {
+    color: var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 0.15em;
+}
+
+.experience h3 {
+    font: 500 23px var(--serif);
+    margin: 24px 0 6px;
+}
+
+.experience p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+}
+
+
+/* =========================================================
+   9. DINING
+========================================================= */
+
+.dining {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 0;
+
+    background: white;
+}
+
+.dining-img {
+    min-height: 500px;
+
+    background:
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1400&q=85")
+        center / cover;
+}
+
+.dining-copy {
+    padding: 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dining-copy p {
+    max-width: 520px;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   10. FOOTER
+========================================================= */
+
+.footer {
+    background: var(--ink);
+    color: white;
+
+    padding: 60px 8vw 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+}
+
+.footer-brand {
+    font: 500 25px var(--serif);
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    font-size: 12px;
+
+    justify-self: end;
+    text-align: right;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+
+    border-top: 1px solid #444;
+
+    padding-top: 18px;
+
+    color: #999;
+
+    font-size: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   11. PROPERTY PAGE HERO
+========================================================= */
+
+.property-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 620px;
+}
+
+.property-copy {
+    padding: 9vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.property-copy h1 {
+    font: 500 clamp(42px, 5vw, 72px) / 1.05 var(--serif);
+    margin: 15px 0;
+}
+
+.property-copy p {
+    max-width: 560px;
+    color: var(--muted);
+}
+
+.property-photo {
+    background: center / cover;
+}
+
+.property-photo.ind {
+    background-image:
+        url("images/indraprastha/Facade-web.webp");
+}
+
+.property-photo.ser {
+    background-image:
+        url("images/Serenity/hero-web.webp");
+}
+
+
+/* =========================================================
+   12. PROPERTY STATS
+========================================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.stat {
+    padding: 25px;
+    border-right: 1px solid var(--line);
+}
+
+.stat:last-child {
+    border: 0;
+}
+
+.stat strong {
+    display: block;
+    font: 500 25px var(--serif);
+}
+
+.stat span {
+    font-size: 10px;
+    color: var(--muted);
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   13. ROOMS
+========================================================= */
+
+.rooms {
+    background: #fff;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.room {
+    background: var(--paper);
+}
+
+
+/* ---------------------------------------------------------
+   ROOM PREVIEW IMAGE
+--------------------------------------------------------- */
+
+.room-photo {
+    height: 290px;
+    background: center / cover;
+}
+
+
+/* =========================================================
+   HOTEL INDRAPRASTHA ROOM IMAGES
+   DO NOT CHANGE
+========================================================= */
+
+
+/* Executive AC */
+
+.room-photo.r1 {
+    background-image:
+        url("images/indraprastha/executive-ac-web.webp");
+}
+
+
+/* Executive AC Front View */
+
+.room-photo.r2 {
+    background-image:
+        url("images/indraprastha/executive-front-web.webp");
+}
+
+
+/* Executive Luxury Balcony */
+
+.room-photo.r3 {
+    background-image:
+        url("images/indraprastha/luxury-balcony-web.webp");
+}
+
+
+/* Mountain View Room */
+
+.room-photo.r4 {
+    background-image:
+        url("images/indraprastha/mountain-view-web.webp");
+}
+
+
+/* Royale Suite */
+
+.room-photo.r5 {
+    background-image:
+        url("https://raw.githubusercontent.com/sreejithp-dotcom/beta-bawarchi-website/main/images/indraprastha/royale-suite-web.webp");
+}
+
+
+/* =========================================================
+   SERENITY THE VILLA
+   ROOM IMAGES
+========================================================= */
+
+/*
+   Serenity has two room categories:
+
+   1. Deluxe AC
+   2. Super Deluxe AC
+
+   These use separate classes so they never interfere
+   with the Indraprastha room images above.
+*/
+
+.room-photo.serenity-dummy-1 {
+    background-image:
+        url("images/Serenity/Deluxe Room 1.png");
+}
+
+.room-photo.serenity-dummy-2 {
+    background-image:
+        url("https://raw.githubusercontent.com/sreejithp-dotcom/beta-bawarchi-website/main/images/Serenity/Super Deluxe.png");
+}
+
+
+/* =========================================================
+   ROOM INFORMATION
+========================================================= */
+
+.room-body {
+    padding: 25px;
+}
+
+.room-body h3 {
+    font: 500 26px var(--serif);
+    margin: 0 0 5px;
+}
+
+.room-body small {
+    color: var(--gold);
+}
+
+.room-body p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.photo-link {
+    font-size: 11px;
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   14. AMENITIES
+========================================================= */
+
+.amenity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.amenity {
+    background: var(--paper);
+    padding: 28px;
+}
+
+.amenity h3 {
+    font: 500 21px var(--serif);
+    margin: 0 0 12px;
+}
+
+.amenity p {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+
+/* =========================================================
+   15. OLD ENQUIRY SECTION
+========================================================= */
+
+.enquiry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8vw;
+}
+
+.enquiry-copy p {
+    color: var(--muted);
+    max-width: 520px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   16. OLD BOOKING FORM
+========================================================= */
+
+.form {
+    background: #fff;
+
+    border: 1px solid var(--line);
+
+    padding: 35px;
+}
+
+.form label {
+    font-size: 11px;
+    color: #555;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+.form input,
+.form select,
+.form textarea {
+    display: block;
+
+    width: 100%;
+
+    margin-top: 6px;
+
+    border: 1px solid var(--line);
+
+    padding: 12px;
+
+    background: #faf9f5;
+
+    font: inherit;
+}
+
+.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.full {
+    width: 100%;
+    border: 0;
+}
+
+
+/* =========================================================
+   17. BREADCRUMB
+========================================================= */
+
+.breadcrumb {
+    padding: 20px 8vw;
+
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.breadcrumb a {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   18. LOCATION + CONTACT + BOOKING ENQUIRY
+========================================================= */
+
+.location-enquiry {
+    padding: 90px 7vw;
+    background: var(--paper);
+}
+
+.location-enquiry-header {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.location-enquiry-header .eyebrow {
+    margin-bottom: 12px;
+}
+
+.location-enquiry-header h2 {
+    font: 500 clamp(35px, 4vw, 56px) / 1.1 var(--serif);
+    margin: 8px 0 14px;
+}
+
+.location-enquiry-header p {
+    color: var(--muted);
+    max-width: 600px;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LOCATION / ENQUIRY GRID
+========================================================= */
+
+.location-enquiry-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 28px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   MAP PANEL
+========================================================= */
+
+.map-panel {
+    background: var(--white);
+
+    border: 1px solid var(--line);
+
+    overflow: hidden;
+}
+
+.map-panel iframe {
+    width: 100%;
+    height: 450px;
+
+    display: block;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   PROPERTY CONTACT CARD
+========================================================= */
+
+.property-contact-card {
+    padding: 30px;
+}
+
+.property-contact-card h3 {
+    font: 500 24px var(--serif);
+    margin: 0 0 24px;
+}
+
+
+/* Contact rows */
+
+.contact-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.contact-item:last-of-type {
+    border-bottom: 0;
+}
+
+.contact-label {
+    font-size: 10px;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+.contact-value {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.contact-value a {
+    color: var(--ink);
+}
+
+.contact-value a:hover {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   MAP ACTION BUTTONS
+========================================================= */
+
+.map-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 22px;
+
+    flex-wrap: wrap;
+}
+
+.map-actions a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--ink);
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition: 0.2s ease;
+}
+
+.map-actions a:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
+.map-actions .whatsapp-btn {
+    border-color: var(--gold);
+
+    background: var(--gold);
+
+    color: var(--white);
+}
+
+.map-actions .whatsapp-btn:hover {
+    background: var(--ink);
+
+    border-color: var(--ink);
+}
+
+
+/* =========================================================
+   DIRECT BOOKING FORM CARD
+========================================================= */
+
+.booking-form-card {
+    background: var(--white);
+
+    border: 1px solid var(--line);
+
+    padding: 40px;
+}
+
+.booking-form-card h3 {
+    font: 500 30px var(--serif);
+
+    margin: 0 0 10px;
+}
+
+.booking-form-card > p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin: 0 0 28px;
+}
+
+
+/* =========================================================
+   NEW BOOKING FORM
+========================================================= */
+
+.booking-form {
+    display: grid;
+
+    gap: 16px;
+}
+
+.booking-form label {
+    display: grid;
+
+    gap: 7px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    color: var(--muted);
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--line);
+
+    background: var(--paper);
+
+    color: var(--ink);
+
+    font-family: var(--sans);
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--gold);
+}
+
+.booking-form textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+.booking-form button {
+    margin-top: 5px;
+
+    min-height: 48px;
+
+    border: 0;
+
+    background: var(--ink);
+
+    color: var(--white);
+
+    font-family: var(--sans);
+
+    font-size: 11px;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.booking-form button:hover {
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   LOCATION INFORMATION STRIP
+========================================================= */
+
+.location-info-strip {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 28px;
+
+    border: 1px solid var(--line);
+
+    background: var(--white);
+}
+
+.location-info-strip div {
+    padding: 20px 24px;
+
+    border-right: 1px solid var(--line);
+}
+
+.location-info-strip div:last-child {
+    border-right: 0;
+}
+
+.location-info-strip strong {
+    display: block;
+
+    font: 500 18px var(--serif);
+
+    margin-bottom: 5px;
+}
+
+.location-info-strip span {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   19. TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    /* Navigation */
+
+    .nav a:not(.cta) {
+        display: none;
+    }
+
+
+    /* Main layouts */
+
+    .hero,
+    .property-hero,
+    .dining,
+    .enquiry {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Homepage hero */
+
+    .hero-img {
+        min-height: 430px;
+    }
+
+
+    /* Property hero */
+
+    .property-photo {
+        min-height: 430px;
+    }
+
+    .property-copy {
+        padding: 70px 8vw;
+    }
+
+    .property-photo {
+        order: -1;
+    }
+
+
+    /* Property cards and rooms */
+
+    .property-grid,
+    .room-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Experiences and amenities */
+
+    .experience-grid,
+    .amenity-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    /* Stats */
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-contact {
+        justify-self: start;
+        text-align: left;
+    }
+
+    .footer-bottom {
+        grid-column: 1;
+    }
+
+
+    /* =====================================================
+       LOCATION / ENQUIRY MOBILE
+    ===================================================== */
+
+    .location-enquiry {
+        padding: 65px 6vw;
+    }
+
+    .location-enquiry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-panel iframe {
+        height: 400px;
+    }
+
+    .booking-form-card {
+        padding: 30px;
+    }
+
+    .location-info-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .location-info-strip div {
+        border-right: 0;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .location-info-strip div:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+/* =========================================================
+   20. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    /* General sections */
+
+    .section {
+        padding: 75px 6vw;
+    }
+
+
+    /* Experiences / amenities / stats */
+
+    .experience-grid,
+    .amenity-grid,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Old form */
+
+    .two {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Header */
+
+    .header {
+        padding: 0 5vw;
+    }
+
+    .brand-logo {
+        width: 135px;
+        height: 48px;
+    }
+
+
+    /* Dining */
+
+    .dining-copy {
+        padding: 65px 7vw;
+    }
+
+
+    /* =====================================================
+       LOCATION / ENQUIRY SMALL MOBILE
+    ===================================================== */
+
+    .location-enquiry {
+        padding: 55px 5vw;
+    }
+
+    .location-enquiry-header {
+        margin-bottom: 30px;
+    }
+
+    .map-panel iframe {
+        height: 350px;
+    }
+
+    .property-contact-card {
+        padding: 24px;
+    }
+
+    .booking-form-card {
+        padding: 24px;
+    }
+
+    .booking-form-card h3 {
+        font-size: 27px;
+    }
+
+    .contact-item {
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+    }
+
+    .map-actions {
+        flex-direction: column;
+    }
+
+    .map-actions a {
+        width: 100%;
+    }
+
+    .location-info-strip div {
+        padding: 18px 20px;
+    }
+}
+/* =========================================================
+   CONTACT ACTIONS
+========================================================= */
+
+.contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    max-width: 520px;
+}
+
+.contact-action {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 16px 18px;
+
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.45);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.contact-action:hover {
+    background: var(--white);
+    border-color: var(--gold);
+    transform: translateX(4px);
+}
+
+.contact-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--line);
+
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.contact-action-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    flex: 1;
+}
+
+.contact-action-text small {
+    color: var(--gold);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+}
+
+.contact-action-text strong {
+    font-size: 13px;
+    font-weight: 500;
+
+    color: var(--ink);
+}
+
+.contact-arrow {
+    font-size: 17px;
+    color: var(--muted);
+
+    transition: transform 0.2s ease;
+}
+
+.contact-action:hover .contact-arrow {
+    transform: translateX(4px);
+    color: var(--gold);
+}
