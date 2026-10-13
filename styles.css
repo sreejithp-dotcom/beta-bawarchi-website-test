@@ -102,11 +102,37 @@ img {
 
 .nav a:hover {
     color: var(--gold);
+.nav .cta {
+    border: 1px solid var(--ink);
+    padding: 9px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.nav .cta {
-    border-bottom: 1px solid var(--ink);
+.nav-book-now {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink);
+    font-size: 12px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
+
+.nav-book-now:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+}
+
+.nav .cta:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
 
 
 /* =========================================================
@@ -1300,6 +1326,16 @@ img {
     .dining-copy {
         padding: 65px 7vw;
     }
+  .nav-book-now,
+    .nav .cta {
+        padding: 7px 8px;
+        font-size: 9px;
+    }
+
+    .room-booking-actions > a {
+        flex: 1;
+    }
+}
 
 
     /* =====================================================
