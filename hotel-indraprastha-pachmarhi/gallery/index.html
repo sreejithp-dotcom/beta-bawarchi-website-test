@@ -453,6 +453,60 @@
         transition: none;
       }
     }
+
+
+    /* COMPACT ROOM CATEGORIES: one cover photo per category */
+    .gallery-room {
+      padding: 34px 6% 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 720px);
+      gap: 16px;
+    }
+
+    .gallery-photo {
+      max-width: 720px;
+    }
+
+    .gallery-photo img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .gallery-view-all {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 12px 18px;
+      border: 1px solid var(--ink, #20201d);
+      background: var(--ink, #20201d);
+      color: #fff;
+      font-family: var(--sans, "DM Sans", Arial, sans-serif);
+      font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .gallery-view-all:hover,
+    .gallery-view-all:focus-visible {
+      border-color: var(--gold, #a57d42);
+      background: var(--gold, #a57d42);
+      color: #fff;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .gallery-photo {
+        max-width: 100%;
+      }
+    }
+
   </style>
 </head>
 
@@ -758,6 +812,8 @@
     }
 
     roomCategories.forEach(function(room) {
+      if (!room.files || room.files.length === 0) return;
+
       const section = document.createElement("section");
       section.className = "gallery-room";
       section.id = room.id;
@@ -766,59 +822,61 @@
       heading.className = "gallery-room-heading";
 
       const headingContent = document.createElement("div");
-
       const eyebrow = document.createElement("div");
       eyebrow.className = "gallery-eyebrow";
       eyebrow.textContent = "ROOM CATEGORY";
 
       const title = document.createElement("h2");
       title.textContent = room.title;
-
       headingContent.append(eyebrow, title);
 
       const count = document.createElement("div");
       count.className = "gallery-count";
-      count.textContent = room.files.length + " photos";
+      count.textContent = room.files.length +
+        (room.files.length === 1 ? " photo" : " photos");
 
       heading.append(headingContent, count);
 
+      // Only the first image is shown on the page as the category cover.
       const grid = document.createElement("div");
       grid.className = "gallery-grid";
 
-      room.files.forEach(function(filename, index) {
-        const button = document.createElement("button");
-        button.className = "gallery-photo";
-        button.type = "button";
-        button.setAttribute(
-          "aria-label",
-          "View " + room.title + " photo " + (index + 1)
-        );
+      const coverButton = document.createElement("button");
+      coverButton.className = "gallery-photo";
+      coverButton.type = "button";
+      coverButton.setAttribute("aria-label", "Open all photos for " + room.title);
 
-        const image = document.createElement("img");
-        image.src = getImagePath(room, filename);
-        image.alt = room.title + " at Hotel Indraprastha Luxuria";
-        image.loading = index < 3 ? "eager" : "lazy";
-        image.decoding = "async";
+      const coverImage = document.createElement("img");
+      coverImage.src = getImagePath(room, room.files[0]);
+      coverImage.alt = room.title + " at Hotel Indraprastha Luxuria";
+      coverImage.loading = "lazy";
+      coverImage.decoding = "async";
 
-        image.addEventListener("error", function() {
-          button.hidden = true;
-          console.warn("Gallery image could not be loaded:", image.src);
-        });
-
-        const label = document.createElement("span");
-        label.className = "gallery-photo-label";
-        label.textContent = "View photo ↗";
-
-        button.append(image, label);
-
-        button.addEventListener("click", function() {
-          openViewer(room, index);
-        });
-
-        grid.appendChild(button);
+      coverImage.addEventListener("error", function() {
+        coverButton.hidden = true;
+        console.warn("Gallery cover image could not be loaded:", coverImage.src);
       });
 
-      section.append(heading, grid);
+      const coverLabel = document.createElement("span");
+      coverLabel.className = "gallery-photo-label";
+      coverLabel.textContent = "View photos ↗";
+
+      coverButton.append(coverImage, coverLabel);
+      coverButton.addEventListener("click", function() {
+        openViewer(room, 0);
+      });
+      grid.appendChild(coverButton);
+
+      const viewAllButton = document.createElement("button");
+      viewAllButton.type = "button";
+      viewAllButton.className = "gallery-view-all";
+      viewAllButton.textContent = "View all " + room.files.length + " photos →";
+      viewAllButton.setAttribute("aria-label", "View all " + room.files.length + " photos for " + room.title);
+      viewAllButton.addEventListener("click", function() {
+        openViewer(room, 0);
+      });
+
+      section.append(heading, grid, viewAllButton);
       roomGallery.appendChild(section);
     });
 
