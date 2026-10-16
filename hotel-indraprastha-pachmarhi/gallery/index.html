@@ -4,153 +4,520 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Room Gallery | Hotel Indraprastha Luxuria, Pachmarhi</title>
-  <meta name="description" content="Explore room photos of Hotel Indraprastha Luxuria in Pachmarhi, including Executive AC, balcony rooms, mountain-view rooms and the Royale Suite.">
-  <link rel="canonical" href="https://betabawarchigroup.com/hotel-indraprastha-pachmarhi/gallery/">
+
+  <meta name="description"
+        content="Explore room photos of Hotel Indraprastha Luxuria in Pachmarhi, including Executive AC, balcony rooms, mountain-view rooms and the Royale Suite.">
+
+  <meta name="robots" content="index,follow">
+  <link rel="canonical"
+        href="https://betabawarchigroup.com/hotel-indraprastha-pachmarhi/gallery/">
+
   <meta name="theme-color" content="#f7f5ef">
+
+  <!-- Match the main Beta Bawarchi Group website -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet">
+
+  <!-- Shared website stylesheet -->
+  <link rel="stylesheet" href="../../styles.css">
+
   <style>
-    :root {
-      --ink:#20201d; --muted:#6f6d67; --gold:#a57d42;
-      --paper:#f7f5ef; --white:#fff; --line:#ded9cf;
+    /* =====================================================
+       GALLERY PAGE
+       Header and footer use the shared website stylesheet.
+    ===================================================== */
+
+    .gallery-intro {
+      background: var(--paper, #f7f5ef);
+      padding: 65px 6% 35px;
+      text-align: center;
     }
-    * { box-sizing:border-box; }
-    body {
-      margin:0; background:var(--paper); color:var(--ink);
-      font-family:Arial,Helvetica,sans-serif;
+
+    .gallery-eyebrow {
+      color: var(--gold, #a57d42);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
     }
-    a { color:inherit; }
-    .topbar {
-      padding:20px 6%; display:flex; align-items:center;
-      justify-content:space-between; gap:16px;
-      background:var(--white); border-bottom:1px solid var(--line);
+
+    .gallery-intro h1 {
+      margin: 15px 0;
+      font-family: var(--serif, "Playfair Display", Georgia, serif);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink, #20201d);
     }
-    .brand { font-size:15px; font-weight:700; text-decoration:none; }
-    .back { color:var(--muted); font-size:14px; text-decoration:none; }
-    .hero { padding:65px 6% 38px; text-align:center; }
-    .eyebrow {
-      color:var(--gold); font-size:11px; font-weight:700;
-      letter-spacing:2.5px; text-transform:uppercase;
+
+    .gallery-intro p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted, #6f6d67);
+      font-size: 15px;
+      line-height: 1.8;
     }
-    h1,h2,h3 { font-family:Georgia,"Times New Roman",serif; font-weight:400; }
-    h1 { font-size:clamp(34px,5vw,58px); margin:15px 0; }
-    .hero p { max-width:620px; margin:0 auto; line-height:1.8; color:var(--muted); }
-    .categories {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-      padding:0 5% 38px;
+
+    .gallery-breadcrumb {
+      padding: 17px 6%;
+      background: var(--white, #fff);
+      border-bottom: 1px solid var(--line, #ded9cf);
+      color: var(--muted, #6f6d67);
+      font-size: 12px;
     }
-    .categories a {
-      border:1px solid var(--line); border-radius:30px;
-      padding:11px 16px; font-size:13px; text-decoration:none;
-      background:var(--white);
+
+    .gallery-breadcrumb a {
+      color: inherit;
+      text-decoration: none;
     }
-    .categories a:hover { border-color:var(--gold); }
-    .room-section { padding:30px 6% 48px; scroll-margin-top:20px; }
-    .section-head {
-      display:flex; justify-content:space-between; align-items:end;
-      gap:20px; margin-bottom:20px;
+
+    .gallery-breadcrumb a:hover {
+      color: var(--gold, #a57d42);
     }
-    h2 { font-size:clamp(25px,3vw,35px); margin:9px 0 0; }
-    .count { font-size:13px; color:var(--muted); white-space:nowrap; }
-    .photo-grid {
-      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px;
+
+    .gallery-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 5% 38px;
+      background: var(--paper, #f7f5ef);
     }
-    .photo {
-      position:relative; display:block; padding:0; border:0; cursor:pointer;
-      overflow:hidden; background:#e9e4d9; border-radius:3px;
-      aspect-ratio:4/3;
+
+    .gallery-categories a {
+      padding: 10px 15px;
+      border: 1px solid var(--line, #ded9cf);
+      border-radius: 30px;
+      background: var(--white, #fff);
+      color: var(--ink, #20201d);
+      font-size: 12px;
+      text-decoration: none;
+      transition: border-color .2s ease, color .2s ease;
     }
-    .photo img {
-      display:block; width:100%; height:100%; object-fit:cover;
-      transition:transform .35s ease;
+
+    .gallery-categories a:hover,
+    .gallery-categories a:focus-visible {
+      border-color: var(--gold, #a57d42);
+      color: var(--gold, #a57d42);
     }
-    .photo:hover img { transform:scale(1.04); }
-    .photo span {
-      position:absolute; right:10px; bottom:10px;
-      background:#20201dcc; color:white; padding:7px 10px;
-      font-size:12px; border-radius:2px;
+
+    .gallery-room {
+      padding: 34px 6% 48px;
+      scroll-margin-top: 25px;
     }
-    .footer {
-      text-align:center; padding:35px 6%; border-top:1px solid var(--line);
-      color:var(--muted); font-size:13px; line-height:1.9;
+
+    .gallery-room:nth-child(even) {
+      background: var(--white, #fff);
     }
-    .footer a { color:var(--gold); }
-    .viewer {
-      position:fixed; inset:0; z-index:1000; display:none;
-      align-items:center; justify-content:center; flex-direction:column;
-      background:rgba(12,12,11,.96); padding:18px;
+
+    .gallery-room-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
     }
-    .viewer.open { display:flex; }
-    .viewer-top {
-      width:min(1100px,100%); display:flex; justify-content:space-between;
-      align-items:center; color:white; gap:15px; padding:0 0 12px;
+
+    .gallery-room-heading h2 {
+      margin: 9px 0 0;
+      font-family: var(--serif, "Playfair Display", Georgia, serif);
+      font-size: clamp(27px, 3vw, 36px);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--ink, #20201d);
     }
-    .viewer-title { font-size:14px; }
-    .viewer-count { color:#d1cdc5; font-size:13px; }
-    .close {
-      border:1px solid #777; color:white; background:transparent;
-      border-radius:50%; width:42px; height:42px; font-size:25px; cursor:pointer;
+
+    .gallery-count {
+      flex-shrink: 0;
+      color: var(--muted, #6f6d67);
+      font-size: 12px;
     }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-photo {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 3px;
+      background: #e9e4d9;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .gallery-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .gallery-photo:hover img {
+      transform: scale(1.045);
+    }
+
+    .gallery-photo-label {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 8px 10px;
+      border-radius: 2px;
+      background: rgba(32, 32, 29, .9);
+      color: #fff;
+      font-family: var(--sans, "DM Sans", Arial, sans-serif);
+      font-size: 11px;
+    }
+
+    .gallery-photo:focus-visible,
+    .gallery-categories a:focus-visible {
+      outline: 2px solid var(--gold, #a57d42);
+      outline-offset: 3px;
+    }
+
+    .gallery-booking {
+      padding: 48px 6%;
+      background: var(--paper, #f7f5ef);
+      text-align: center;
+      border-top: 1px solid var(--line, #ded9cf);
+    }
+
+    .gallery-booking h2 {
+      margin: 0 0 12px;
+      font-family: var(--serif, "Playfair Display", Georgia, serif);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500;
+    }
+
+    .gallery-booking p {
+      margin: 0 auto 22px;
+      max-width: 550px;
+      color: var(--muted, #6f6d67);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .gallery-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .gallery-action {
+      display: inline-block;
+      padding: 13px 20px;
+      border: 1px solid var(--ink, #20201d);
+      background: transparent;
+      color: var(--ink, #20201d);
+      font-size: 13px;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .gallery-action.primary {
+      background: var(--ink, #20201d);
+      color: #fff;
+    }
+
+    .gallery-action:hover {
+      background: var(--gold, #a57d42);
+      border-color: var(--gold, #a57d42);
+      color: #fff;
+    }
+
+    /* =====================================================
+       PHOTO POPUP
+    ===================================================== */
+
+    .photo-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 15, 14, .97);
+    }
+
+    .photo-viewer.is-open {
+      display: flex;
+    }
+
+    .viewer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      width: min(1100px, 100%);
+      padding: 0 0 13px;
+      color: #fff;
+    }
+
+    .viewer-room-name {
+      font-family: var(--serif, "Playfair Display", Georgia, serif);
+      font-size: 19px;
+    }
+
+    .viewer-counter {
+      margin-top: 5px;
+      color: #c9c5bd;
+      font-size: 12px;
+    }
+
+    .viewer-close {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #777;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
     .viewer-stage {
-      width:min(1100px,100%); height:min(68vh,720px);
-      display:flex; align-items:center; justify-content:center; gap:12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: min(1100px, 100%);
+      height: min(68vh, 720px);
     }
-    .viewer-stage img {
-      max-width:calc(100% - 100px); max-height:100%;
-      object-fit:contain; display:block;
+
+    .viewer-image {
+      display: block;
+      max-width: calc(100% - 108px);
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
     }
-    .arrow {
-      flex:0 0 42px; height:48px; border:1px solid #777;
-      background:#242421; color:white; font-size:26px; cursor:pointer;
-      border-radius:3px;
+
+    .viewer-arrow {
+      display: inline-flex;
+      flex: 0 0 44px;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      border: 1px solid #777;
+      border-radius: 3px;
+      background: #252523;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
     }
-    .thumbs {
-      display:flex; gap:8px; max-width:min(1100px,100%);
-      overflow-x:auto; padding:14px 2px 5px;
+
+    .viewer-arrow:hover,
+    .viewer-close:hover {
+      background: #44433f;
     }
-    .thumb {
-      flex:0 0 76px; height:58px; padding:0; border:2px solid transparent;
-      opacity:.65; background:none; cursor:pointer;
+
+    .viewer-thumbnails {
+      display: flex;
+      gap: 8px;
+      max-width: min(1100px, 100%);
+      overflow-x: auto;
+      padding: 15px 2px 5px;
     }
-    .thumb.active { border-color:#d8b77f; opacity:1; }
-    .thumb img { width:100%; height:100%; object-fit:cover; }
-    .hint { color:#c9c5bd; font-size:12px; margin-top:8px; }
-    @media(max-width:760px) {
-      .topbar { padding:17px 5%; }
-      .hero { padding:48px 5% 28px; }
-      .room-section { padding:25px 5% 35px; }
-      .photo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-      .section-head { align-items:start; }
-      .viewer { padding:10px; }
-      .viewer-stage { height:58vh; gap:5px; }
-      .viewer-stage img { max-width:calc(100% - 66px); }
-      .arrow { flex-basis:30px; height:42px; font-size:20px; }
-      .thumb { flex-basis:64px; height:49px; }
+
+    .viewer-thumb {
+      flex: 0 0 76px;
+      height: 58px;
+      padding: 0;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background: transparent;
+      opacity: .65;
+      cursor: pointer;
     }
-    @media(max-width:420px) {
-      .photo-grid { grid-template-columns:1fr 1fr; }
-      .categories { gap:7px; }
-      .categories a { padding:9px 11px; font-size:12px; }
-      .count { font-size:11px; }
+
+    .viewer-thumb.is-active {
+      border-color: #d8b77f;
+      opacity: 1;
     }
-    @media(prefers-reduced-motion:reduce) {
-      *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; }
+
+    .viewer-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .viewer-help {
+      margin-top: 9px;
+      color: #c9c5bd;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .gallery-intro {
+        padding: 45px 5% 28px;
+      }
+
+      .gallery-breadcrumb {
+        padding: 14px 5%;
+      }
+
+      .gallery-room {
+        padding: 28px 5% 35px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .gallery-room-heading {
+        align-items: start;
+      }
+
+      .gallery-categories {
+        gap: 7px;
+        padding-bottom: 25px;
+      }
+
+      .gallery-categories a {
+        padding: 9px 11px;
+        font-size: 11px;
+      }
+
+      .photo-viewer {
+        padding: 10px;
+      }
+
+      .viewer-stage {
+        height: 58vh;
+        gap: 5px;
+      }
+
+      .viewer-image {
+        max-width: calc(100% - 70px);
+      }
+
+      .viewer-arrow {
+        flex-basis: 30px;
+        height: 42px;
+        font-size: 22px;
+      }
+
+      .viewer-thumb {
+        flex-basis: 64px;
+        height: 49px;
+      }
+
+      .viewer-room-name {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .gallery-grid {
+        gap: 8px;
+      }
+
+      .gallery-photo-label {
+        right: 6px;
+        bottom: 6px;
+        padding: 6px 7px;
+        font-size: 10px;
+      }
+
+      .gallery-count {
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-photo img {
+        transition: none;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="../../index.html">BETA BAWARCHI GROUP</a>
-    <a class="back" href="../index.html">← Hotel details</a>
+
+  <!-- =====================================================
+       SHARED BETA BAWARCHI GROUP HEADER
+  ====================================================== -->
+
+  <header class="header">
+    <a class="brand" href="../../index.html" aria-label="Beta Bawarchi Group home">
+      <img
+        src="../../images/logo.png"
+        alt="Beta Bawarchi Group"
+        class="brand-logo">
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../../index.html#properties">Stays</a>
+      <a href="../../index.html#experiences">Experiences</a>
+      <a href="../../index.html#dining">Dining</a>
+      <a href="../index.html#enquiry">Contact</a>
+
+      <a
+        class="nav-book-now"
+        href="https://letsbook.me/booking/hotelindraprasthaluxuria"
+        target="_blank"
+        rel="noopener noreferrer">
+        Book Now
+      </a>
+
+      <a class="cta" href="../index.html#enquiry">Enquire</a>
+    </nav>
   </header>
 
+  <!-- BREADCRUMB -->
+
+  <div class="gallery-breadcrumb">
+    <a href="../../index.html">Beta Bawarchi Group</a>
+    &nbsp; / &nbsp;
+    <a href="../index.html">Hotel Indraprastha Luxuria</a>
+    &nbsp; / &nbsp;
+    Room Gallery
+  </div>
+
   <main>
-    <section class="hero">
-      <div class="eyebrow">Hotel Indraprastha Luxuria · Pachmarhi</div>
+
+    <!-- PAGE INTRO -->
+
+    <section class="gallery-intro">
+      <div class="gallery-eyebrow">
+        Hotel Indraprastha Luxuria · Pachmarhi
+      </div>
+
       <h1>Explore your stay.</h1>
-      <p>Browse our room photographs, explore the details and find the room that suits your Pachmarhi getaway.</p>
+
+      <p>
+        Browse our room photographs, explore the details and
+        find the room that suits your Pachmarhi getaway.
+      </p>
     </section>
 
-    <nav class="categories" aria-label="Room categories">
+    <!-- ROOM CATEGORY NAVIGATION -->
+
+    <nav class="gallery-categories" aria-label="Browse room categories">
       <a href="#executive-ac">Executive AC</a>
       <a href="#executive-front">Executive AC Front View</a>
       <a href="#luxury-balcony">Executive Luxury Balcony</a>
@@ -158,204 +525,435 @@
       <a href="#royale-suite">Royale Suite</a>
     </nav>
 
-    <div id="gallery"></div>
+    <!-- GALLERY SECTIONS ARE BUILT FROM THE PHOTO LIST BELOW -->
+
+    <div id="roomGallery"></div>
+
+    <!-- BOOKING ACTION -->
+
+    <section class="gallery-booking">
+      <div class="gallery-eyebrow">Plan your Pachmarhi stay</div>
+
+      <h2>Find your room.</h2>
+
+      <p>
+        Ready to visit? Check availability online or contact
+        our team directly for your stay at Hotel Indraprastha Luxuria.
+      </p>
+
+      <div class="gallery-actions">
+        <a
+          class="gallery-action primary"
+          href="https://letsbook.me/booking/hotelindraprasthaluxuria"
+          target="_blank"
+          rel="noopener noreferrer">
+          Book Your Stay
+        </a>
+
+        <a
+          class="gallery-action"
+          href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20would%20like%20to%20enquire%20about%20Hotel%20Indraprastha%20Luxuria.">
+          Enquire on WhatsApp
+        </a>
+
+        <a class="gallery-action" href="../index.html">
+          Back to Hotel
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer">
-    <strong>Hotel Indraprastha Luxuria</strong><br>
-    Pachmarhi, Madhya Pradesh<br>
-    <a href="https://letsbook.me/booking/hotelindraprasthaluxuria">Book your stay</a>
-    &nbsp;·&nbsp;
-    <a href="https://wa.me/918085055993">Enquire on WhatsApp</a>
+  <!-- =====================================================
+       SHARED BETA BAWARCHI GROUP FOOTER
+  ====================================================== -->
+
+  <footer class="footer" id="contact">
+
+    <div>
+      <div class="footer-brand">BETA BAWARCHI GROUP</div>
+      <p>People · Places · Experiences</p>
+    </div>
+
+    <div class="footer-contact">
+      <a href="mailto:sales@betabawarchigroup.com">
+        sales@betabawarchigroup.com
+      </a>
+
+      <a href="mailto:support@betabawarchigroup.com">
+        support@betabawarchigroup.com
+      </a>
+
+      <a
+        href="https://wa.me/918085055993"
+        target="_blank"
+        rel="noopener noreferrer">
+        WhatsApp · +91 80850 55993
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Beta Bawarchi Group</span>
+      <span>Pachmarhi, Madhya Pradesh</span>
+    </div>
+
   </footer>
 
-  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Room photo viewer">
-    <div class="viewer-top">
+  <!-- =====================================================
+       FULL-SIZE PHOTO VIEWER
+  ====================================================== -->
+
+  <div
+    class="photo-viewer"
+    id="photoViewer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Room photo gallery">
+
+    <div class="viewer-header">
       <div>
-        <div class="viewer-title" id="viewerTitle"></div>
-        <div class="viewer-count" id="viewerCount"></div>
+        <div class="viewer-room-name" id="viewerRoomName"></div>
+        <div class="viewer-counter" id="viewerCounter"></div>
       </div>
-      <button class="close" id="closeViewer" aria-label="Close photo viewer">×</button>
+
+      <button
+        class="viewer-close"
+        id="closeViewer"
+        type="button"
+        aria-label="Close photo gallery">
+        ×
+      </button>
     </div>
+
     <div class="viewer-stage">
-      <button class="arrow" id="prevPhoto" aria-label="Previous photo">‹</button>
-      <img id="largePhoto" src="" alt="">
-      <button class="arrow" id="nextPhoto" aria-label="Next photo">›</button>
+      <button
+        class="viewer-arrow"
+        id="previousPhoto"
+        type="button"
+        aria-label="Previous photo">
+        ‹
+      </button>
+
+      <img class="viewer-image" id="viewerImage" src="" alt="">
+
+      <button
+        class="viewer-arrow"
+        id="nextPhoto"
+        type="button"
+        aria-label="Next photo">
+        ›
+      </button>
     </div>
-    <div class="thumbs" id="thumbs" aria-label="Choose a photo"></div>
-    <div class="hint">Use the arrows or thumbnails to explore the photos · Press Esc to close</div>
+
+    <div
+      class="viewer-thumbnails"
+      id="viewerThumbnails"
+      aria-label="Photo thumbnails">
+    </div>
+
+    <div class="viewer-help">
+      Select a thumbnail or use the arrows · Press Esc to close
+    </div>
   </div>
 
   <script>
-    const base = "../../images/indraprastha/";
+    /* =====================================================
+       PHOTO FILES
 
-    const rooms = [
+       Paths are relative to this gallery page.
+       Keep the filenames aligned with the files in GitHub.
+    ===================================================== */
+
+    const imageBase = "../../images/indraprastha/";
+
+    const roomCategories = [
       {
         id: "executive-ac",
         title: "Executive AC",
         folder: "executive-ac/",
-        files: ["no-view.webp","no-view2.webp","no-view3.webp","no-view4.webp"]
+        files: [
+          "no-view.webp",
+          "no-view2.webp",
+          "no-view3.webp",
+          "no-view4.webp"
+        ]
       },
       {
         id: "executive-front",
         title: "Executive AC Front View",
         folder: "executive-front/",
-        files: ["ex1.webp","ex2.webp","ex3.webp","ex4.webp","ex6.webp","ex8.webp","ex9.webp"]
+        files: [
+          "ex1.webp",
+          "ex2.webp",
+          "ex3.webp",
+          "ex4.webp",
+          "ex6.webp",
+          "ex8.webp",
+          "ex9.webp"
+        ]
       },
       {
         id: "luxury-balcony",
         title: "Executive Luxury Balcony View",
         folder: "luxury-balcony/",
-        files: ["ex-lx1.webp","ex-lx2.webp","ex-lx3.webp","ex-lx4.webp","ex-lx5.webp","ex-lx6.webp"]
+        files: [
+          "ex-lx1.webp",
+          "ex-lx2.webp",
+          "ex-lx3.webp",
+          "ex-lx4.webp",
+          "ex-lx5.webp",
+          "ex-lx6.webp"
+        ]
       },
       {
         id: "mountain-view",
         title: "Mountain View Room Balcony",
         folder: "mountain-view/",
-        files: ["mountain2-1.webp","mounatain7.webp","mountain8.webp","mountain3.webp","mounatin5.webp","mountain4.webp","mounatin6.webp"]
+        files: [
+          "mountain2-1.webp",
+          "mounatain7.webp",
+          "mountain8.webp",
+          "mountain3.webp",
+          "mounatin5.webp",
+          "mountain4.webp",
+          "mounatin6.webp"
+        ]
       },
       {
         id: "royale-suite",
         title: "Royale Suite Balcony",
         folder: "royale-suite/",
-        files: ["royale2-1.webp","royale2-2.webp","royale2-3.webp","royale2-4.webp","royale2-5.webp","royale2-6.webp","royale2-7.webp","royale2-9.webp","royale2-web-1448x1086.webp"]
+        files: [
+          "royale2-1.webp",
+          "royale2-2.webp",
+          "royale2-3.webp",
+          "royale2-4.webp",
+          "royale2-5.webp",
+          "royale2-6.webp",
+          "royale2-7.webp",
+          "royale2-9.webp",
+          "royale2-web-1448x1086.webp"
+        ]
       }
     ];
 
-    const gallery = document.getElementById("gallery");
-    const viewer = document.getElementById("viewer");
-    const largePhoto = document.getElementById("largePhoto");
-    const viewerTitle = document.getElementById("viewerTitle");
-    const viewerCount = document.getElementById("viewerCount");
-    const thumbs = document.getElementById("thumbs");
-    let activeRoom = null;
-    let activeIndex = 0;
-    let previousFocus = null;
+    /* =====================================================
+       BUILD THE ROOM PHOTO SECTIONS
+    ===================================================== */
 
-    function imagePath(room, file) {
-      return base + room.folder + file;
+    const roomGallery = document.getElementById("roomGallery");
+
+    const photoViewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerRoomName = document.getElementById("viewerRoomName");
+    const viewerCounter = document.getElementById("viewerCounter");
+    const viewerThumbnails = document.getElementById("viewerThumbnails");
+
+    let currentRoom = null;
+    let currentPhotoIndex = 0;
+    let previouslyFocusedElement = null;
+
+    function getImagePath(room, filename) {
+      return imageBase + room.folder + filename;
     }
 
-    rooms.forEach(room => {
+    roomCategories.forEach(function(room) {
       const section = document.createElement("section");
-      section.className = "room-section";
+      section.className = "gallery-room";
       section.id = room.id;
 
-      const head = document.createElement("div");
-      head.className = "section-head";
+      const heading = document.createElement("div");
+      heading.className = "gallery-room-heading";
 
-      const titleWrap = document.createElement("div");
+      const headingContent = document.createElement("div");
+
       const eyebrow = document.createElement("div");
-      eyebrow.className = "eyebrow";
+      eyebrow.className = "gallery-eyebrow";
       eyebrow.textContent = "ROOM CATEGORY";
 
       const title = document.createElement("h2");
       title.textContent = room.title;
 
-      titleWrap.append(eyebrow, title);
+      headingContent.append(eyebrow, title);
 
       const count = document.createElement("div");
-      count.className = "count";
+      count.className = "gallery-count";
       count.textContent = room.files.length + " photos";
 
-      head.append(titleWrap, count);
+      heading.append(headingContent, count);
 
       const grid = document.createElement("div");
-      grid.className = "photo-grid";
+      grid.className = "gallery-grid";
 
-      room.files.forEach((file, index) => {
+      room.files.forEach(function(filename, index) {
         const button = document.createElement("button");
-        button.className = "photo";
+        button.className = "gallery-photo";
         button.type = "button";
-        button.setAttribute("aria-label", "View " + room.title + " photo " + (index + 1));
+        button.setAttribute(
+          "aria-label",
+          "View " + room.title + " photo " + (index + 1)
+        );
 
-        const img = document.createElement("img");
-        img.src = imagePath(room, file);
-        img.alt = room.title + " at Hotel Indraprastha Luxuria";
-        img.loading = index < 3 ? "eager" : "lazy";
-        img.decoding = "async";
+        const image = document.createElement("img");
+        image.src = getImagePath(room, filename);
+        image.alt = room.title + " at Hotel Indraprastha Luxuria";
+        image.loading = index < 3 ? "eager" : "lazy";
+        image.decoding = "async";
+
+        image.addEventListener("error", function() {
+          button.hidden = true;
+          console.warn("Gallery image could not be loaded:", image.src);
+        });
 
         const label = document.createElement("span");
+        label.className = "gallery-photo-label";
         label.textContent = "View photo ↗";
 
-        button.append(img, label);
-        button.addEventListener("click", () => openViewer(room, index));
+        button.append(image, label);
+
+        button.addEventListener("click", function() {
+          openViewer(room, index);
+        });
+
         grid.appendChild(button);
       });
 
-      section.append(head, grid);
-      gallery.appendChild(section);
+      section.append(heading, grid);
+      roomGallery.appendChild(section);
     });
 
+    /* =====================================================
+       OPEN AND RENDER THE PHOTO VIEWER
+    ===================================================== */
+
     function openViewer(room, index) {
-      activeRoom = room;
-      activeIndex = index;
-      previousFocus = document.activeElement;
-      viewer.classList.add("open");
+      currentRoom = room;
+      currentPhotoIndex = index;
+      previouslyFocusedElement = document.activeElement;
+
+      photoViewer.classList.add("is-open");
       document.body.style.overflow = "hidden";
+
       renderViewer();
+
       document.getElementById("closeViewer").focus();
     }
 
     function renderViewer() {
-      if (!activeRoom) return;
-      const file = activeRoom.files[activeIndex];
-      largePhoto.src = imagePath(activeRoom, file);
-      largePhoto.alt = activeRoom.title + " photo " + (activeIndex + 1);
-      viewerTitle.textContent = activeRoom.title;
-      viewerCount.textContent = (activeIndex + 1) + " of " + activeRoom.files.length;
+      if (!currentRoom) return;
 
-      thumbs.replaceChildren();
-      activeRoom.files.forEach((thumbFile, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "thumb" + (index === activeIndex ? " active" : "");
-        button.setAttribute("aria-label", "Show photo " + (index + 1));
+      const filename = currentRoom.files[currentPhotoIndex];
 
-        const img = document.createElement("img");
-        img.src = imagePath(activeRoom, thumbFile);
-        img.alt = "";
-        img.loading = "lazy";
-        button.appendChild(img);
-        button.addEventListener("click", () => {
-          activeIndex = index;
+      viewerImage.src = getImagePath(currentRoom, filename);
+      viewerImage.alt = currentRoom.title + " photo " + (currentPhotoIndex + 1);
+
+      viewerRoomName.textContent = currentRoom.title;
+      viewerCounter.textContent =
+        (currentPhotoIndex + 1) + " of " + currentRoom.files.length;
+
+      viewerThumbnails.replaceChildren();
+
+      currentRoom.files.forEach(function(thumbFilename, index) {
+        const thumbButton = document.createElement("button");
+        thumbButton.type = "button";
+        thumbButton.className =
+          "viewer-thumb" + (index === currentPhotoIndex ? " is-active" : "");
+
+        thumbButton.setAttribute(
+          "aria-label",
+          "Show photo " + (index + 1)
+        );
+
+        if (index === currentPhotoIndex) {
+          thumbButton.setAttribute("aria-current", "true");
+        }
+
+        const thumbImage = document.createElement("img");
+        thumbImage.src = getImagePath(currentRoom, thumbFilename);
+        thumbImage.alt = "";
+        thumbImage.loading = "lazy";
+
+        thumbButton.appendChild(thumbImage);
+
+        thumbButton.addEventListener("click", function() {
+          currentPhotoIndex = index;
           renderViewer();
         });
-        thumbs.appendChild(button);
+
+        viewerThumbnails.appendChild(thumbButton);
       });
 
-      const selectedThumb = thumbs.querySelector(".active");
-      if (selectedThumb) selectedThumb.scrollIntoView({block:"nearest", inline:"nearest"});
+      const selectedThumbnail = viewerThumbnails.querySelector(".is-active");
+
+      if (selectedThumbnail) {
+        selectedThumbnail.scrollIntoView({
+          block: "nearest",
+          inline: "nearest"
+        });
+      }
     }
 
+    /* =====================================================
+       NEXT / PREVIOUS PHOTO
+    ===================================================== */
+
     function movePhoto(direction) {
-      if (!activeRoom) return;
-      activeIndex = (activeIndex + direction + activeRoom.files.length) % activeRoom.files.length;
+      if (!currentRoom) return;
+
+      currentPhotoIndex =
+        (currentPhotoIndex + direction + currentRoom.files.length) %
+        currentRoom.files.length;
+
       renderViewer();
     }
 
+    document.getElementById("previousPhoto").addEventListener("click", function() {
+      movePhoto(-1);
+    });
+
+    document.getElementById("nextPhoto").addEventListener("click", function() {
+      movePhoto(1);
+    });
+
+    /* =====================================================
+       CLOSE THE VIEWER
+    ===================================================== */
+
     function closeViewer() {
-      viewer.classList.remove("open");
+      photoViewer.classList.remove("is-open");
       document.body.style.overflow = "";
-      largePhoto.src = "";
-      if (previousFocus) previousFocus.focus();
+
+      viewerImage.src = "";
+
+      if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+      }
     }
 
-    document.getElementById("prevPhoto").addEventListener("click", () => movePhoto(-1));
-    document.getElementById("nextPhoto").addEventListener("click", () => movePhoto(1));
     document.getElementById("closeViewer").addEventListener("click", closeViewer);
 
-    viewer.addEventListener("click", event => {
-      if (event.target === viewer) closeViewer();
+    photoViewer.addEventListener("click", function(event) {
+      if (event.target === photoViewer) {
+        closeViewer();
+      }
     });
 
-    document.addEventListener("keydown", event => {
-      if (!viewer.classList.contains("open")) return;
-      if (event.key === "Escape") closeViewer();
-      if (event.key === "ArrowLeft") movePhoto(-1);
-      if (event.key === "ArrowRight") movePhoto(1);
+    document.addEventListener("keydown", function(event) {
+      if (!photoViewer.classList.contains("is-open")) return;
+
+      if (event.key === "Escape") {
+        closeViewer();
+      }
+
+      if (event.key === "ArrowLeft") {
+        movePhoto(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        movePhoto(1);
+      }
     });
   </script>
+
 </body>
 </html>
-
