@@ -1,1 +1,374 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Pachmarhi Experiences | Beta Bawarchi Group</title>
+  <meta name="description" content="Explore Pachmarhi sightseeing, gypsy safari bookings, camping, bike rentals, transfers, dining and outdoor experiences with Beta Bawarchi Group.">
+  <link rel="canonical" href="https://betabawarchigroup.com/experiences/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .experience-hero {
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      padding: 45px 7%;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(15,24,25,.78), rgba(15,24,25,.12)),
+        url("../images/Hero-slide/Destination-1-web.webp") center 48% / cover;
+    }
+
+    .experience-hero h1 {
+      font-family: var(--serif, Georgia, serif);
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 500;
+      margin: 12px 0;
+    }
+
+    .experience-hero p {
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .experience-content {
+      padding: 55px 6%;
+      background: var(--paper, #f7f5ef);
+    }
+
+    .experience-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    .experience-heading h2,
+    .additional-heading h2 {
+      font-family: var(--serif, Georgia, serif);
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 500;
+      margin: 10px 0;
+    }
+
+    .experience-heading p {
+      max-width: 460px;
+      line-height: 1.7;
+      color: var(--muted, #6f6d67);
+      font-size: 13px;
+    }
+
+    .experience-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .experience-card {
+      display: grid;
+      grid-template-columns: minmax(100px, 145px) minmax(0, 1fr);
+      gap: 17px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--line, #ded9cf);
+      background: rgba(255,255,255,.5);
+    }
+
+    .experience-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 3px;
+      background: #e9e4d9;
+    }
+
+    .experience-card h3 {
+      font-family: var(--serif, Georgia, serif);
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0 0 8px;
+    }
+
+    .experience-card p {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--muted, #6f6d67);
+      margin: 0 0 12px;
+    }
+
+    .experience-card a {
+      color: var(--gold, #a57d42);
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .additional-section {
+      padding: 40px 6%;
+      background: #eeece5;
+    }
+
+    .additional-heading {
+      margin-bottom: 22px;
+    }
+
+    .help-banner {
+      padding: 32px 6%;
+      background:
+        linear-gradient(rgba(18,35,32,.72), rgba(18,35,32,.72)),
+        url("../images/Hero-slide/Destination-2-web.webp") center / cover;
+    }
+
+    .help-inner {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px;
+      background: var(--paper, #f7f5ef);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .help-inner h2 {
+      font-family: var(--serif, Georgia, serif);
+      font-weight: 500;
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .help-inner p {
+      margin: 0;
+      color: var(--muted, #6f6d67);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .help-button {
+      display: inline-block;
+      flex-shrink: 0;
+      padding: 13px 18px;
+      background: var(--ink, #20201d);
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .experience-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .experience-hero {
+        min-height: 230px;
+        padding: 35px 6%;
+      }
+
+      .experience-content {
+        padding: 38px 5%;
+      }
+
+      .experience-heading {
+        display: block;
+      }
+
+      .experience-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-card {
+        grid-template-columns: 115px minmax(0, 1fr);
+        gap: 13px;
+      }
+
+      .experience-card img {
+        height: 125px;
+      }
+
+      .experience-card h3 {
+        font-size: 18px;
+      }
+
+      .additional-section {
+        padding: 35px 5%;
+      }
+
+      .help-inner {
+        display: block;
+      }
+
+      .help-button {
+        margin-top: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a class="brand" href="../index.html" aria-label="Beta Bawarchi Group home">
+      <img src="../images/logo.png" alt="Beta Bawarchi Group" class="brand-logo">
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../index.html#properties">Stays</a>
+      <a href="./" aria-current="page">Experiences</a>
+      <a href="../index.html#dining">Dining</a>
+      <a href="../index.html#contact">Contact</a>
+      <a class="cta" href="../index.html#enquiry">Enquire</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="experience-hero">
+      <div>
+        <div class="kicker">PACHMARHI EXPERIENCES</div>
+        <h1>More than a room.</h1>
+        <p>Discover the natural beauty, adventure and local experiences that make Pachmarhi special.</p>
+      </div>
+    </section>
+
+    <section class="experience-content">
+      <div class="experience-heading">
+        <div>
+          <div class="kicker">OUR EXPERIENCES</div>
+          <h2>Explore, Experience, Enjoy</h2>
+        </div>
+        <p>From local sightseeing to outdoor activities, explore options to make your Pachmarhi trip more memorable.</p>
+      </div>
+
+      <div class="experience-cards">
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-1-web.webp" alt="Pachmarhi sightseeing" loading="lazy">
+          <div>
+            <h3>Local Sightseeing</h3>
+            <p>Plan your sightseeing with local assistance, waterfalls, viewpoints and popular attractions.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20Pachmarhi%20local%20sightseeing." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-2-web.webp" alt="Gypsy safari in Pachmarhi" loading="lazy">
+          <div>
+            <h3>Gypsy Booking</h3>
+            <p>Enquire about permitted safari arrangements, availability and booking requirements.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20Gypsy%20booking." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-3-web.webp" alt="Outdoor experiences in Pachmarhi" loading="lazy">
+          <div>
+            <h3>Night Camping</h3>
+            <p>Ask our team about available camping experiences and local arrangements.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20night%20camping." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-2-web.webp" alt="Bike rental and local travel" loading="lazy">
+          <div>
+            <h3>Bike Rental</h3>
+            <p>Explore Pachmarhi at your own pace with local bike rental options.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20bike%20rental." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-3-web.webp" alt="Local pickup and drop service" loading="lazy">
+          <div>
+            <h3>Pickup &amp; Drop</h3>
+            <p>Ask about local arrival, departure and transport assistance.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20pickup%20and%20drop." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-1-web.webp" alt="Airport transfer assistance" loading="lazy">
+          <div>
+            <h3>Airport Transfer</h3>
+            <p>Enquire about transfer assistance from nearby airports for your trip.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20airport%20transfer." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="additional-section">
+      <div class="additional-heading">
+        <div class="kicker">ADDITIONAL EXPERIENCES</div>
+        <h2>Make Your Trip More Special</h2>
+      </div>
+
+      <div class="experience-cards">
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-2-web.webp" alt="Outdoor and nature activities" loading="lazy">
+          <div>
+            <h3>Adventure &amp; Outdoor Experiences</h3>
+            <p>Enquire about guided nature activities and experiences with local operators.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20outdoor%20experiences." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-3-web.webp" alt="Dining and meal options" loading="lazy">
+          <div>
+            <h3>Dining Upgrades</h3>
+            <p>Ask about meal-plan upgrades, special dining arrangements and food packages.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20dining%20upgrades." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <img src="../images/Hero-slide/Destination-1-web.webp" alt="Sightseeing packages around Pachmarhi" loading="lazy">
+          <div>
+            <h3>Sightseeing Packages</h3>
+            <p>Enquire about half-day or full-day sightseeing options around Pachmarhi.</p>
+            <a href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20I%20want%20to%20enquire%20about%20sightseeing%20packages." target="_blank" rel="noopener noreferrer">Enquire →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="help-banner">
+      <div class="help-inner">
+        <div>
+          <h2>Need Help Planning Your Experience?</h2>
+          <p>Contact our team about sightseeing, safari bookings, transport, camping and other activities in Pachmarhi.</p>
+        </div>
+        <a class="help-button" href="https://wa.me/918085055993?text=Hello%20Beta%20Bawarchi%20Group%2C%20please%20help%20me%20plan%20my%20Pachmarhi%20experiences." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div>
+      <div class="footer-brand">BETA BAWARCHI GROUP</div>
+      <p>People · Places · Experiences</p>
+    </div>
+
+    <div class="footer-contact">
+      <a href="mailto:sales@betabawarchigroup.com">sales@betabawarchigroup.com</a>
+      <a href="mailto:support@betabawarchigroup.com">support@betabawarchigroup.com</a>
+      <a href="https://wa.me/918085055993" target="_blank" rel="noopener noreferrer">WhatsApp · +91 80850 55993</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Beta Bawarchi Group</span>
+      <span>Pachmarhi, Madhya Pradesh</span>
+    </div>
+  </footer>
+</body>
+</html>
+
