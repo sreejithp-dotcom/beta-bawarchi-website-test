@@ -2195,9 +2195,9 @@ section.experiences:not(#experiences) .experience-grid {
     }
 }
 
-/* =========================================
-   INDRAPRASTHA ROOM DETAILS POPUP
-========================================= */
+/* =========================================================
+   INDRAPRASTHA — REDESIGNED ROOM DETAILS POPUP
+========================================================= */
 
 .room-modal {
   position: fixed;
@@ -2217,70 +2217,134 @@ section.experiences:not(#experiences) .experience-grid {
 .room-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 20, 18, 0.76);
-  cursor: pointer;
+  background: rgba(23, 25, 22, 0.72);
+  backdrop-filter: blur(3px);
 }
 
 .room-modal-panel {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  width: min(100%, 1000px);
+  width: min(1120px, 100%);
   max-height: calc(100vh - 48px);
   overflow-y: auto;
-  background: var(--white, #fff);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  background: #fff;
+  border: 1px solid rgba(222, 217, 207, 0.9);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+  animation: roomModalIn 0.22s ease-out;
+}
+
+@keyframes roomModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .room-modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 3;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
   display: grid;
   place-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid var(--line, #ded9cf);
+  border: 1px solid var(--line);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.96);
-  color: var(--ink, #20201d);
+  color: var(--ink);
   font-size: 27px;
   line-height: 1;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .room-modal-close:hover {
-  background: var(--ink, #20201d);
+  background: var(--ink);
   color: #fff;
+}
+
+/* Top section */
+
+.room-modal-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 0;
 }
 
 .room-modal-gallery {
   min-width: 0;
-  padding: 22px;
-  background: var(--paper, #f7f5ef);
+  padding: 26px;
+  background: #f5f2eb;
+}
+
+.room-modal-hero-image {
+  position: relative;
+  overflow: hidden;
+  background: #e9e4d9;
 }
 
 #roomModalImage {
   display: block;
   width: 100%;
-  height: 390px;
+  height: 355px;
   object-fit: cover;
-  background: #e9e4d9;
+}
+
+.room-modal-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.room-modal-gallery-arrow:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+.room-modal-prev {
+  left: 12px;
+}
+
+.room-modal-next {
+  right: 12px;
+}
+
+.room-modal-photo-count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 5px 9px;
+  background: rgba(32, 32, 29, 0.78);
+  color: #fff;
+  font-size: 10px;
 }
 
 .room-modal-thumbnails {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   margin-top: 12px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
   overflow-x: auto;
 }
 
 .room-modal-thumb {
-  flex: 0 0 76px;
-  height: 60px;
+  flex: 0 0 78px;
+  height: 59px;
   padding: 0;
   overflow: hidden;
   border: 2px solid transparent;
@@ -2289,7 +2353,7 @@ section.experiences:not(#experiences) .experience-grid {
 }
 
 .room-modal-thumb.is-active {
-  border-color: var(--gold, #a57d42);
+  border-color: var(--gold);
 }
 
 .room-modal-thumb img {
@@ -2299,110 +2363,291 @@ section.experiences:not(#experiences) .experience-grid {
   object-fit: cover;
 }
 
-.room-modal-content {
-  min-width: 0;
-  padding: 42px 34px 32px;
+.room-modal-overview {
+  padding: 44px 38px 30px;
+  align-self: center;
 }
 
-.room-modal-content h2 {
-  margin: 10px 0;
-  color: var(--ink, #20201d);
-  font: 500 clamp(26px, 3vw, 36px)/1.2 var(--serif, Georgia, serif);
+.room-modal-overview .kicker {
+  margin-bottom: 12px;
 }
 
-.room-modal-count {
-  margin: 0 0 28px;
-  color: var(--muted, #6f6d67);
-  font-size: 12px;
-}
-
-.room-modal-content h3 {
+.room-modal-overview h2 {
   margin: 0 0 14px;
-  color: var(--ink, #20201d);
-  font: 500 19px/1.4 var(--serif, Georgia, serif);
+  padding-right: 15px;
+  color: var(--ink);
+  font: 500 clamp(29px, 3.2vw, 42px)/1.13 var(--serif);
+}
+
+.room-modal-description {
+  margin: 0 0 25px;
+  max-width: 470px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.room-modal-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+  border-top: 1px solid var(--line);
+}
+
+.room-modal-fact {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.room-modal-fact-icon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 15px;
+}
+
+.room-modal-fact > span:nth-child(2) {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.room-modal-fact strong {
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Bottom details */
+
+.room-modal-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(235px, 0.75fr);
+  border-top: 1px solid var(--line);
+}
+
+.room-modal-details-column {
+  min-width: 0;
+  padding: 28px 30px;
+}
+
+.room-modal-section h3,
+.room-modal-facilities h3 {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font: 500 22px/1.3 var(--serif);
+}
+
+.room-modal-facilities h3 span {
+  color: var(--muted);
+  font: 400 10px/1.5 var(--sans);
 }
 
 .room-modal-amenities {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 11px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .room-modal-amenities li {
-  position: relative;
-  padding-left: 23px;
-  color: var(--muted, #6f6d67);
-  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
   line-height: 1.5;
 }
 
-.room-modal-amenities li::before {
+.room-modal-amenity-icon {
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.room-modal-facilities {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid var(--line);
+}
+
+.room-modal-facility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+}
+
+.room-modal-facility-grid > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.room-modal-facility-grid > div > span {
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold);
+}
+
+.room-modal-facility-grid p {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+}
+
+.room-modal-facility-grid strong {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.room-modal-facility-grid small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.room-modal-side {
+  padding: 28px;
+  background: #f8f6f1;
+  border-left: 1px solid var(--line);
+}
+
+.room-modal-highlights {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.room-modal-highlights li {
+  position: relative;
+  padding-left: 23px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.room-modal-highlights li::before {
   position: absolute;
   left: 0;
   top: 0;
   content: "✓";
-  color: var(--gold, #a57d42);
-  font-weight: 600;
+  color: var(--gold);
+  font-weight: 700;
 }
 
 .room-modal-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 26px;
 }
 
 .room-modal-actions a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
-  min-height: 44px;
-  padding: 10px 12px;
+  min-height: 46px;
+  padding: 12px 14px;
   text-align: center;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.room-modal-actions .room-book-btn {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: #fff;
+}
+
+.room-modal-actions .room-book-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.room-modal-actions .room-enquire-btn {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.room-modal-actions .room-enquire-btn:hover {
+  background: var(--ink);
+  color: #fff;
 }
 
 /* Tablet */
-@media (max-width: 800px) {
+
+@media (max-width: 850px) {
   .room-modal {
     padding: 16px;
   }
 
   .room-modal-panel {
-    grid-template-columns: 1fr;
-    width: min(100%, 620px);
     max-height: calc(100vh - 32px);
   }
 
+  .room-modal-main {
+    grid-template-columns: 1fr;
+  }
+
   .room-modal-gallery {
-    padding: 18px;
+    padding: 20px;
   }
 
   #roomModalImage {
-    height: clamp(220px, 42vw, 340px);
+    height: clamp(240px, 42vw, 360px);
   }
 
-  .room-modal-content {
-    padding: 26px;
+  .room-modal-overview {
+    padding: 28px;
   }
 
-  .room-modal-count {
-    margin-bottom: 22px;
+  .room-modal-lower {
+    grid-template-columns: 1fr;
   }
 
-  .room-modal-amenities {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 18px;
+  .room-modal-side {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .room-modal-actions {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+
+@media (max-width: 560px) {
   .room-modal {
     padding: 8px;
   }
@@ -2419,35 +2664,97 @@ section.experiences:not(#experiences) .experience-grid {
     height: 230px;
   }
 
-  .room-modal-content {
-    padding: 22px 18px;
+  .room-modal-overview {
+    padding: 24px 18px;
   }
 
-  .room-modal-content h2 {
-    padding-right: 24px;
-    font-size: 27px;
+  .room-modal-overview h2 {
+    font-size: 29px;
+  }
+
+  .room-modal-description {
+    margin-bottom: 20px;
+  }
+
+  .room-modal-facts {
+    gap: 0 12px;
+  }
+
+  .room-modal-fact {
+    grid-template-columns: 30px minmax(0, 1fr);
+    column-gap: 7px;
+    padding: 12px 0;
+  }
+
+  .room-modal-fact-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .room-modal-details-column,
+  .room-modal-side {
+    padding: 24px 18px;
+  }
+
+  .room-modal-section h3,
+  .room-modal-facilities h3 {
+    font-size: 21px;
   }
 
   .room-modal-amenities {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 10px;
+  }
+
+  .room-modal-amenities li {
+    gap: 7px;
+    font-size: 10px;
+  }
+
+  .room-modal-amenity-icon {
+    flex-basis: 27px;
+    width: 27px;
+    height: 27px;
+    font-size: 12px;
+  }
+
+  .room-modal-facility-grid {
+    gap: 16px 10px;
+  }
+
+  .room-modal-facility-grid > div {
+    gap: 7px;
+  }
+
+  .room-modal-facility-grid > div > span {
+    flex-basis: 27px;
+    width: 27px;
+    height: 27px;
   }
 
   .room-modal-actions {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-top: 22px;
   }
 
   .room-modal-actions a {
-    padding: 10px 6px;
-    font-size: 11px;
+    padding: 10px 7px;
+    font-size: 10px;
   }
 
   .room-modal-thumb {
-    flex-basis: 64px;
+    flex-basis: 65px;
     height: 50px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .room-modal-panel {
+    animation: none;
+  }
+}
+
+
 
 
