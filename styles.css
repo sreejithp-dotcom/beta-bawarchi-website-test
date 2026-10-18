@@ -368,45 +368,131 @@ img {
    8. EXPERIENCES
 ========================================================= */
 
-.experiences {
+#experiences.experiences {
     background: #eeece6;
+    display: grid;
+    grid-template-columns: minmax(210px, 0.8fr) minmax(0, 3fr);
+    gap: 38px;
+    align-items: center;
 }
 
-.experience-grid {
+.experience-intro h2 {
+    font: 500 clamp(35px, 4vw, 56px)/1.1 var(--serif);
+    margin: 12px 0 20px;
+}
+
+.experience-intro p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.experience-all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 18px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.experience-all-btn:hover {
+    background: var(--ink);
+}
+
+.experience-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
 
-    gap: 1px;
-
-    background: var(--line);
+.experience-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--paper);
     border: 1px solid var(--line);
 }
 
-.experience {
-    background: var(--paper);
-
-    padding: 30px;
-    min-height: 170px;
+.experience-card img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
-.experience span {
-    color: var(--gold);
-
-    font-size: 10px;
-    letter-spacing: 0.15em;
+.experience-card-body {
+    padding: 12px 14px 15px;
 }
 
-.experience h3 {
-    font: 500 23px var(--serif);
-    margin: 24px 0 6px;
+.experience-card h3 {
+    font: 500 19px/1.2 var(--serif);
+    margin: 0 0 6px;
 }
 
-.experience p {
+.experience-card p {
     font-size: 12px;
+    line-height: 1.6;
     color: var(--muted);
-    margin: 0;
+    margin: 0 0 10px;
 }
 
+.experience-card a {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.experience-card a:hover {
+    color: var(--ink);
+}
+
+@media (max-width: 1000px) {
+    #experiences.experiences {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .experience-intro {
+        max-width: 600px;
+    }
+
+    .experience-intro h2 br {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .experience-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .experience-card img {
+        height: 125px;
+    }
+
+    .experience-card-body {
+        padding: 10px;
+    }
+
+    .experience-card h3 {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 420px) {
+    .experience-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card img {
+        height: 190px;
+    }
+}
 
 /* =========================================================
    9. DINING
@@ -1541,4 +1627,572 @@ img {
         justify-content: flex-start;
     }
 }
+
+/* Mobile navigation menu */
+.mobile-menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 4px auto;
+    background: currentColor;
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 850px) {
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 12px 5vw 20px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav.mobile-menu-open {
+        display: flex;
+    }
+
+    .nav a,
+    .nav a:not(.cta):not(.nav-book-now) {
+        display: block;
+        padding: 13px 5px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav .cta {
+        align-self: flex-start;
+        margin-top: 12px;
+        padding: 10px 16px;
+        border: 1px solid var(--ink);
+    }
+
+    .nav .nav-book-now {
+        align-self: flex-start;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 560px) {
+    .header {
+        padding: 0 5vw;
+    }
+
+    .brand-logo {
+        width: 112px;
+        height: 44px;
+    }
+}
+
+/* Fix Experiences heading on mobile */
+@media (max-width: 700px) {
+    .experience-intro h2 {
+        max-width: 280px;
+        line-height: 1.08;
+    }
+
+    .experience-intro h2 br {
+        display: block;
+    }
+}
+
+/* Restore experience layout on hotel property pages */
+.experiences:not(#experiences) .experience-grid,
+section.experiences:not(#experiences) .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.experiences:not(#experiences) .experience {
+    min-width: 0;
+    padding: 28px;
+    background: var(--paper);
+}
+
+.experiences:not(#experiences) .experience span {
+    display: block;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+}
+
+.experiences:not(#experiences) .experience h3 {
+    font: 500 22px/1.25 var(--serif);
+    margin: 0 0 8px;
+}
+
+.experiences:not(#experiences) .experience p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 850px) {
+    .experiences:not(#experiences) .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .experiences:not(#experiences) .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experiences:not(#experiences) .experience {
+        padding: 22px;
+    }
+}
+
+/* =========================================================
+   INDRAPRASTHA — GROUP EXPERIENCES
+========================================================= */
+
+.ind-group-experiences {
+    padding: 42px 5%;
+    background: linear-gradient(135deg, #eeeadf, #f8f5ee 58%, #e8e4d8);
+}
+
+.ind-group-layout {
+    max-width: 1380px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr) 250px;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.ind-group-intro {
+    padding: 12px 0;
+}
+
+.ind-group-intro h2 {
+    font: 500 clamp(27px, 3vw, 36px)/1.08 var(--serif);
+    margin: 12px 0;
+    color: #17251f;
+}
+
+.ind-group-intro p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.ind-group-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 15px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    transition: background .2s ease;
+}
+
+.ind-group-button:hover {
+    background: var(--ink);
+}
+
+.ind-group-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.ind-group-card {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fffdf8;
+    border: 1px solid rgba(213, 204, 185, .8);
+    border-radius: 24px 24px 16px 16px;
+}
+
+.ind-group-card img {
+    display: block;
+    width: 100%;
+    height: 112px;
+    object-fit: cover;
+}
+
+.ind-group-card-body {
+    padding: 12px 13px 16px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ind-group-card h3 {
+    font: 500 18px/1.2 var(--serif);
+    margin: 0 0 8px;
+    color: #182a22;
+}
+
+.ind-group-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.55;
+    margin: 0 0 12px;
+}
+
+.ind-group-card a {
+    color: #9b641f;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+.ind-group-card a:hover {
+    text-decoration: underline;
+}
+
+.ind-group-more {
+    border-left: 1px solid #d4cbbb;
+    padding-left: 20px;
+}
+
+.ind-group-more h3 {
+    margin: 3px 0 10px;
+    font: 600 10px var(--sans);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #9b641f;
+}
+
+.ind-group-more-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 14px;
+    gap: 10px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid #e2dccf;
+    color: inherit;
+}
+
+.ind-group-more-item:last-child {
+    border-bottom: 0;
+}
+
+.ind-group-more-item img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ind-group-more-item strong {
+    display: block;
+    font: 500 14px/1.25 var(--serif);
+    margin-bottom: 3px;
+}
+
+.ind-group-more-item small {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.ind-group-arrow {
+    color: var(--gold);
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .ind-group-layout {
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .ind-group-more {
+        grid-column: 1 / -1;
+        border-left: 0;
+        border-top: 1px solid #d4cbbb;
+        padding: 16px 0 0;
+    }
+
+    .ind-group-more-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .ind-group-more-item {
+        border-bottom: 0;
+    }
+
+    .ind-group-card h3 {
+        font-size: 17px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .ind-group-experiences {
+        padding: 32px 5%;
+    }
+
+    .ind-group-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .ind-group-intro {
+        max-width: 500px;
+    }
+
+    .ind-group-intro h2 {
+        max-width: 380px;
+    }
+
+    .ind-group-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .ind-group-card {
+        display: grid;
+        grid-template-columns: 38% 62%;
+        border-radius: 16px;
+    }
+
+    .ind-group-card img {
+        height: 100%;
+        min-height: 155px;
+    }
+
+    .ind-group-card-body {
+        padding: 14px 12px;
+    }
+
+    .ind-group-card h3 {
+        font-size: 17px;
+    }
+
+    .ind-group-more {
+        grid-column: auto;
+        padding-top: 16px;
+    }
+
+    .ind-group-more-item {
+        border-bottom: 1px solid #e2dccf;
+    }
+}
+
+@media (max-width: 400px) {
+    .ind-group-card {
+        grid-template-columns: 35% 65%;
+    }
+
+    .ind-group-card img {
+        min-height: 175px;
+    }
+
+    .ind-group-card-body {
+        padding: 12px 10px;
+    }
+
+    .ind-group-card h3 {
+        font-size: 16px;
+    }
+}
+/* INDRAPRASTHA — ROOM CARD REDESIGN */
+
+.rooms .room-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    background: transparent;
+    border: 0;
+    align-items: stretch;
+}
+
+.rooms .room {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 5px 20px rgba(32, 32, 29, 0.045);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rooms .room:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(32, 32, 29, 0.09);
+}
+
+.rooms .room-photo {
+    height: 230px;
+    flex-shrink: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rooms .room-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.rooms .room-body small {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+.rooms .room-body h3 {
+    min-height: 2.5em;
+    margin: 0 0 16px;
+    font: 500 23px/1.2 var(--serif);
+}
+
+.rooms .room-feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.rooms .room-feature-list > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rooms .room-feature-list > span > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 10px;
+}
+
+.rooms .room-details-btn {
+    align-self: flex-start;
+    margin: auto 0 2px;
+    padding: 0 0 4px;
+    border: 0;
+    border-bottom: 1px solid var(--gold);
+    background: transparent;
+    color: var(--ink);
+    font: 600 11px/1.5 var(--sans);
+    cursor: pointer;
+    text-align: left;
+}
+
+.rooms .room-details-btn:hover,
+.rooms .room-details-btn:focus-visible {
+    color: var(--gold);
+}
+
+.rooms .room-booking-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.rooms .room-booking-actions > a {
+    min-width: 0;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    .rooms .room-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rooms .room-photo {
+        height: 250px;
+    }
+}
+
+/* Keep two columns on tablets */
+@media (max-width: 850px) {
+    .rooms .room-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rooms .room-photo {
+        height: 220px;
+    }
+
+    .rooms .room-body {
+        padding: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+    .rooms .room-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .rooms .room-photo {
+        height: 240px;
+    }
+
+    .rooms .room-body {
+        padding: 21px;
+    }
+
+    .rooms .room-body h3 {
+        min-height: 0;
+        font-size: 25px;
+    }
+}
+
 
