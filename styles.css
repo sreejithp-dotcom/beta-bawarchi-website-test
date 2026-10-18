@@ -2754,7 +2754,191 @@ section.experiences:not(#experiences) .experience-grid {
     animation: none;
   }
 }
+/* ROOM POPUP LAYOUT FIX */
 
+.room-modal-panel {
+  width: min(1240px, calc(100vw - 40px)) !important;
+  max-height: calc(100vh - 40px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.room-modal-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
+  align-items: start !important;
+  gap: 0 !important;
+}
+
+.room-modal-gallery,
+.room-modal-overview,
+.room-modal-details-column,
+.room-modal-side {
+  min-width: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.room-modal-gallery {
+  padding: 28px !important;
+}
+
+.room-modal-overview {
+  padding: 64px 34px 28px !important;
+}
+
+.room-modal-facts {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 18px !important;
+}
+
+.room-modal-fact {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+
+.room-modal-fact > div:last-child {
+  min-width: 0 !important;
+}
+
+.room-modal-fact strong {
+  display: block !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.45 !important;
+}
+
+.room-modal-lower {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.65fr) minmax(230px, 0.75fr) !important;
+  align-items: start !important;
+  gap: 28px !important;
+  padding: 0 28px 28px !important;
+}
+
+.room-modal-details-column {
+  display: grid !important;
+  gap: 24px !important;
+}
+
+.room-modal-section,
+.room-modal-facilities {
+  min-width: 0 !important;
+}
+
+.room-modal-amenities {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 14px !important;
+}
+
+.room-modal-amenities li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.room-modal-amenities li > span:last-child {
+  min-width: 0 !important;
+}
+
+.room-modal-side {
+  position: static !important;
+  padding: 22px !important;
+  border-left: 1px solid #ded9cf !important;
+  background: #f7f5ef !important;
+}
+
+.room-modal-highlights li {
+  overflow-wrap: anywhere !important;
+}
+
+.room-modal-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+.room-modal-actions a {
+  width: 100% !important;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .room-modal-panel {
+    width: min(720px, calc(100vw - 24px)) !important;
+    max-height: calc(100vh - 24px) !important;
+  }
+
+  .room-modal-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .room-modal-gallery {
+    padding: 58px 20px 16px !important;
+  }
+
+  .room-modal-overview {
+    padding: 20px 24px 26px !important;
+  }
+
+  .room-modal-lower {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+    padding: 0 24px 24px !important;
+  }
+
+  .room-modal-side {
+    border-left: 0 !important;
+    border-top: 1px solid #ded9cf !important;
+  }
+
+  .room-modal-actions {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .room-modal-panel {
+    width: 100vw !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+
+  .room-modal-gallery {
+    padding: 62px 14px 12px !important;
+  }
+
+  .room-modal-overview {
+    padding: 18px 18px 22px !important;
+  }
+
+  .room-modal-facts {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .room-modal-lower {
+    padding: 0 18px 20px !important;
+  }
+
+  .room-modal-amenities {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .room-modal-side {
+    padding: 18px !important;
+  }
+
+  .room-modal-actions {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
 
 
 
