@@ -2940,5 +2940,220 @@ section.experiences:not(#experiences) .experience-grid {
   }
 }
 
+/* FINAL ROOM POPUP WIDTH AND OVERFLOW FIX */
+
+.room-modal-panel {
+  width: min(1180px, calc(100vw - 40px)) !important;
+  max-width: 1180px !important;
+  max-height: calc(100vh - 40px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.room-modal-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  width: 100% !important;
+  align-items: start !important;
+}
+
+.room-modal-gallery,
+.room-modal-overview {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  float: none !important;
+}
+
+.room-modal-gallery {
+  padding: 28px !important;
+}
+
+.room-modal-overview {
+  padding: 64px 32px 28px !important;
+}
+
+.room-modal-facts {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  gap: 0 18px !important;
+}
+
+.room-modal-fact {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+.room-modal-fact > div:last-child {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.room-modal-lower {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.8fr) !important;
+  align-items: start !important;
+  width: 100% !important;
+  gap: 28px !important;
+  padding: 28px !important;
+  border-top: 1px solid #ded9cf !important;
+}
+
+.room-modal-details-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+.room-modal-section,
+.room-modal-facilities,
+.room-modal-side {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  float: none !important;
+}
+
+.room-modal-amenities {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 16px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.room-modal-amenities li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+  width: auto !important;
+  padding: 12px 0 !important;
+}
+
+.room-modal-amenities li > span:last-child {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.room-modal-side {
+  padding: 24px !important;
+  background: #f7f5ef !important;
+  border: 1px solid #e5e0d7 !important;
+}
+
+.room-modal-highlights {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.room-modal-highlights li {
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.room-modal-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  margin-top: 24px !important;
+}
+
+.room-modal-actions a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 46px !important;
+}
+
+/* Property facilities use the full available width */
+.room-modal-facility-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  width: 100% !important;
+}
+
+.room-modal-facility-grid > div {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+}
+
+.room-modal-facility-grid p {
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.room-modal-facility-grid small {
+  display: block !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (max-width: 850px) {
+  .room-modal-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .room-modal-gallery {
+    padding: 58px 22px 18px !important;
+  }
+
+  .room-modal-overview {
+    padding: 24px !important;
+  }
+
+  .room-modal-lower {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 24px !important;
+  }
+
+  .room-modal-amenities {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .room-modal-panel {
+    width: 100vw !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+
+  .room-modal-gallery {
+    padding: 60px 14px 14px !important;
+  }
+
+  .room-modal-overview {
+    padding: 20px 18px !important;
+  }
+
+  .room-modal-facts,
+  .room-modal-amenities,
+  .room-modal-facility-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .room-modal-lower {
+    padding: 20px 18px !important;
+  }
+
+  .room-modal-side {
+    padding: 18px !important;
+  }
+}
+
 
 
