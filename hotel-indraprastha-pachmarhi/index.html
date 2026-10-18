@@ -1669,62 +1669,74 @@
       });
   }
 
-  function openModal(roomKey, trigger) {
-    const room = rooms[roomKey];
-    document.getElementById("roomModalSize").textContent = room.size;
-    document.getElementById("roomModalOccupancy").textContent = room.occupancy;
-    document.getElementById("roomModalBedType").textContent = room.bedType;
-    document.getElementById("roomModalView").textContent = room.view;
-    if (!room) return;
+  
+function openModal(roomKey, trigger) {
+  const room = rooms[roomKey];
 
-    lastFocusedElement = trigger;
-
-    title.textContent = room.title;
-    eyebrow.textContent = room.eyebrow;
-    description.textContent = room.description;
-    count.textContent = room.count + " rooms";
-    factType.textContent = room.title;
-
-    amenitiesList.replaceChildren();
-
-    const amenityIcons = [
-      "❄", "⌁", "⌂", "♨", "✧", "▤", "▣",
-      "☕", "⌁", "▥", "≋", "▱", "▤"
-    ];
-
-    room.amenities.forEach((amenity, index) => {
-      const item = document.createElement("li");
-
-      const icon = document.createElement("span");
-      icon.className = "room-modal-amenity-icon";
-      icon.setAttribute("aria-hidden", "true");
-      icon.textContent = amenityIcons[index % amenityIcons.length];
-
-      const label = document.createElement("span");
-      label.textContent = amenity;
-
-      item.append(icon, label);
-      amenitiesList.appendChild(item);
-    });
-
-    highlightsList.replaceChildren();
-
-    room.highlights.forEach(highlight => {
-      const item = document.createElement("li");
-      item.textContent = highlight;
-      highlightsList.appendChild(item);
-    });
-
-    enquireLink.dataset.enquireRoom = room.enquiryName;
-    enquireLink.href = "#enquiry";
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-
-    renderPhotos(roomKey, room);
-    modal.querySelector(".room-modal-close").focus();
+  // Stop safely if the room key is invalid
+  if (!room) {
+    console.error("Room details not found:", roomKey);
+    return;
   }
+
+  // Populate room information
+  title.textContent = room.title;
+  eyebrow.textContent = room.eyebrow;
+  description.textContent = room.description;
+
+  document.getElementById("roomModalSize").textContent = room.size;
+  document.getElementById("roomModalOccupancy").textContent = room.occupancy;
+  document.getElementById("roomModalBedType").textContent = room.bedType;
+  document.getElementById("roomModalView").textContent = room.view;
+
+  lastFocusedElement = trigger;
+
+  // Populate amenities
+  amenitiesList.replaceChildren();
+
+  const amenityIcons = [
+    "❄", "⌁", "⌂", "♨", "✧", "▤", "▣",
+    "☕", "⌁", "▥", "≋", "▱", "▤"
+  ];
+
+  room.amenities.forEach((amenity, index) => {
+    const item = document.createElement("li");
+
+    const icon = document.createElement("span");
+    icon.className = "room-modal-amenity-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = amenityIcons[index % amenityIcons.length];
+
+    const label = document.createElement("span");
+    label.textContent = amenity;
+
+    item.append(icon, label);
+    amenitiesList.appendChild(item);
+  });
+
+  // Populate room highlights
+  highlightsList.replaceChildren();
+
+  room.highlights.forEach(highlight => {
+    const item = document.createElement("li");
+    item.textContent = highlight;
+    highlightsList.appendChild(item);
+  });
+
+  // Set the enquiry room
+  enquireLink.dataset.enquireRoom = room.enquiryName;
+  enquireLink.href = "#enquiry";
+
+  // Open the popup
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  renderPhotos(roomKey, room);
+
+  modal.querySelector(".room-modal-close").focus();
+}
+
 
   function closeModal() {
     modal.classList.remove("is-open");
