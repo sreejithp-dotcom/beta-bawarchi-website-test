@@ -1454,6 +1454,10 @@
       title: "Executive AC",
       eyebrow: "EXECUTIVE ROOM",
       count: 6,
+      size: "250 sq.ft",
+      occupancy: "02 Adult + 01 Child",
+      bedType: "King Bed",
+      view: "No View",
       description: "A comfortable air-conditioned room with essential amenities for a relaxing stay in Pachmarhi.",
       enquiryName: "Executive AC",
       highlights: [
@@ -1473,6 +1477,10 @@
       title: "Executive AC Front View",
       eyebrow: "FRONT VIEW ROOM",
       count: 3,
+      size: "250 sq.ft",
+      occupancy: "02 Adult + 01 Child",
+      bedType: "King Bed",
+      view: "Front View",
       description: "An air-conditioned room category with front-view positioning and added in-room conveniences.",
       enquiryName: "Executive AC Front View",
       highlights: [
@@ -1493,6 +1501,10 @@
       title: "Executive Luxury (Balcony)",
       eyebrow: "BALCONY ROOM",
       count: 3,
+      size: "250 sq.ft",
+      occupancy: "03 Adult + 01 Child",
+      bedType: "King Bed",
+      view: "Street View",
       description: "An air-conditioned room with a private balcony and a range of everyday comforts.",
       enquiryName: "Executive Luxury Balcony View",
       highlights: [
@@ -1513,6 +1525,10 @@
       title: "Mountain View Room (Balcony)",
       eyebrow: "MOUNTAIN VIEW ROOM",
       count: 3,
+      size: "250 sq.ft",
+      occupancy: "03 Adult + 01 Child",
+      bedType: "King Bed",
+      view: "Mountain View",
       description: "A balcony room category for guests looking for a mountain-view stay in Pachmarhi.",
       enquiryName: "Mountain View Room (Balcony)",
       highlights: [
@@ -1534,6 +1550,10 @@
       title: "Royale Suite (Balcony)",
       eyebrow: "ROYALE SUITE",
       count: 3,
+      size: "250 sq.ft",
+      occupancy: "04 Adult + 01 Child",
+      bedType: "King Bed",
+      view: "Mountain View",
       description: "A suite category with a private balcony and a selection of in-room comforts.",
       enquiryName: "Royale Suite (Balcony)",
       highlights: [
@@ -1651,6 +1671,10 @@
 
   function openModal(roomKey, trigger) {
     const room = rooms[roomKey];
+    document.getElementById("roomModalSize").textContent = room.size;
+    document.getElementById("roomModalOccupancy").textContent = room.occupancy;
+    document.getElementById("roomModalBedType").textContent = room.bedType;
+    document.getElementById("roomModalView").textContent = room.view;
     if (!room) return;
 
     lastFocusedElement = trigger;
