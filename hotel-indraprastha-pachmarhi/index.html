@@ -1270,6 +1270,285 @@
 
     <script src="../script.js"></script>
 
+<!-- ROOM DETAILS POPUP -->
+<div class="room-modal" id="roomDetailsModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="roomModalTitle"
+     aria-hidden="true">
+
+  <div class="room-modal-overlay" data-close-room-modal></div>
+
+  <div class="room-modal-panel">
+    <button class="room-modal-close" type="button"
+            data-close-room-modal aria-label="Close room details">
+      &times;
+    </button>
+
+    <div class="room-modal-gallery">
+      <img id="roomModalImage" src="" alt="">
+      <div class="room-modal-thumbnails" id="roomModalThumbnails"></div>
+    </div>
+
+    <div class="room-modal-content">
+      <div class="kicker">ROOM DETAILS</div>
+      <h2 id="roomModalTitle"></h2>
+      <p class="room-modal-count" id="roomModalCount"></p>
+
+      <h3>Amenities &amp; Comfort</h3>
+      <ul class="room-modal-amenities" id="roomModalAmenities"></ul>
+
+      <div class="room-modal-actions">
+        <a class="room-book-btn"
+           href="https://letsbook.me/booking/hotelindraprasthaluxuria"
+           target="_blank" rel="noopener noreferrer">
+          Book Now
+        </a>
+
+        <a class="room-enquire-btn"
+           id="roomModalEnquire"
+           href="#enquiry">
+          Enquire
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const modal = document.getElementById("roomDetailsModal");
+  if (!modal) return;
+
+  const mainImage = document.getElementById("roomModalImage");
+  const thumbnails = document.getElementById("roomModalThumbnails");
+  const title = document.getElementById("roomModalTitle");
+  const count = document.getElementById("roomModalCount");
+  const amenitiesList = document.getElementById("roomModalAmenities");
+  const enquireLink = document.getElementById("roomModalEnquire");
+
+  const imageBase = "../images/indraprastha/";
+  const manifestUrl = imageBase + "gallery-manifest.json";
+
+  const rooms = {
+    "executive-ac": {
+      title: "Executive AC",
+      count: "6 rooms available",
+      enquiryName: "Executive AC",
+      amenities: [
+        "Air conditioning",
+        "Private bathroom",
+        "Hot and cold water",
+        "Toiletries and towels",
+        "Iron and ironing board",
+        "Blackout curtains",
+        "Television",
+        "Electric kettle",
+        "Free Wi-Fi"
+      ]
+    },
+    "executive-front": {
+      title: "Executive AC Front View",
+      count: "3 rooms available",
+      enquiryName: "Executive AC Front View",
+      amenities: [
+        "Air conditioning",
+        "Private bathroom",
+        "Hairdryer",
+        "Hot and cold water",
+        "Toiletries and towels",
+        "Iron and ironing board",
+        "Blackout curtains",
+        "Refrigerator",
+        "Television with satellite/cable",
+        "Electric kettle",
+        "Free Wi-Fi"
+      ]
+    },
+    "luxury-balcony": {
+      title: "Executive Luxury (Balcony)",
+      count: "3 rooms available",
+      enquiryName: "Executive Luxury Balcony View",
+      amenities: [
+        "Private balcony",
+        "Air conditioning",
+        "Private bathroom",
+        "Hairdryer",
+        "Hot and cold water",
+        "Toiletries and towels",
+        "Iron and ironing board",
+        "Blackout curtains",
+        "Refrigerator",
+        "Television",
+        "Electric kettle",
+        "Free Wi-Fi"
+      ]
+    },
+    "mountain-view": {
+      title: "Mountain View Room (Balcony)",
+      count: "3 rooms available",
+      enquiryName: "Mountain View Room Balcony",
+      amenities: [
+        "Private balcony",
+        "Mountain-view room category",
+        "Air conditioning",
+        "Private bathroom",
+        "Hairdryer",
+        "Hot and cold water",
+        "Toiletries and towels",
+        "Iron and ironing board",
+        "Blackout curtains",
+        "Refrigerator",
+        "Television",
+        "Electric kettle",
+        "Free Wi-Fi"
+      ]
+    },
+    "royale-suite": {
+      title: "Royale Suite (Balcony)",
+      count: "3 rooms available",
+      enquiryName: "Royale Suite (Balcony)",
+      amenities: [
+        "Private balcony",
+        "Air conditioning",
+        "Private bathroom",
+        "Hairdryer",
+        "Hot and cold water",
+        "Toiletries and towels",
+        "Iron and ironing board",
+        "Blackout curtains",
+        "Refrigerator",
+        "Television",
+        "Electric kettle",
+        "Free Wi-Fi"
+      ]
+    }
+  };
+
+  let activeImages = [];
+  let lastFocusedElement = null;
+
+  function showImage(src, alt, activeButton) {
+    mainImage.src = src;
+    mainImage.alt = alt;
+
+    thumbnails.querySelectorAll("button").forEach(button => {
+      button.classList.toggle("is-active", button === activeButton);
+    });
+  }
+
+  function renderPhotos(roomKey, room) {
+    thumbnails.replaceChildren();
+    mainImage.removeAttribute("src");
+    activeImages = [];
+
+    fetch(manifestUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("Gallery manifest unavailable");
+        return response.json();
+      })
+      .then(manifest => {
+        const galleryRoom = manifest[roomKey];
+        if (!galleryRoom || !Array.isArray(galleryRoom.files)) {
+          throw new Error("No photos listed for this room");
+        }
+
+        const folder = galleryRoom.folder || roomKey + "/";
+        activeImages = galleryRoom.files.map(filename => ({
+          src: imageBase + folder + filename,
+          alt: room.title + " photo"
+        }));
+
+        if (!activeImages.length) throw new Error("No room photos found");
+
+        activeImages.forEach((photo, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "room-modal-thumb";
+          button.setAttribute("aria-label", "View photo " + (index + 1));
+
+          const image = document.createElement("img");
+          image.src = photo.src;
+          image.alt = "";
+          image.loading = "lazy";
+
+          button.appendChild(image);
+          button.addEventListener("click", () => {
+            showImage(photo.src, photo.alt, button);
+          });
+
+          image.addEventListener("error", () => {
+            button.hidden = true;
+          });
+
+          thumbnails.appendChild(button);
+
+          if (index === 0) showImage(photo.src, photo.alt, button);
+        });
+      })
+      .catch(error => {
+        console.warn("Room gallery could not be loaded:", error);
+        mainImage.alt = "Room photos are currently unavailable.";
+        thumbnails.textContent = "Room photos could not be loaded.";
+      });
+  }
+
+  function openModal(roomKey, trigger) {
+    const room = rooms[roomKey];
+    if (!room) return;
+
+    lastFocusedElement = trigger;
+    title.textContent = room.title;
+    count.textContent = room.count;
+
+    amenitiesList.replaceChildren();
+    room.amenities.forEach(amenity => {
+      const item = document.createElement("li");
+      item.textContent = amenity;
+      amenitiesList.appendChild(item);
+    });
+
+    enquireLink.dataset.enquireRoom = room.enquiryName;
+    enquireLink.href = "#enquiry";
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    renderPhotos(roomKey, room);
+    modal.querySelector(".room-modal-close").focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  document.querySelectorAll("[data-room-details]").forEach(button => {
+    button.addEventListener("click", () => {
+      openModal(button.dataset.roomDetails, button);
+    });
+  });
+
+  modal.querySelectorAll("[data-close-room-modal]").forEach(button => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  // Keep the existing enquiry form's room-selection behavior.
+  enquireLink.addEventListener("click", () => {
+    closeModal();
+  });
+})();
+</script>
+
 
 </body>
 
